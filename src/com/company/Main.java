@@ -14,7 +14,7 @@ public class Main {
             int[][] secondMatrix = createMatrix(input);
             printMatrix(secondMatrix);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            System.out.println("Какво действие желаете да извършите:събиране;изваждане;умножение.");
+            System.out.println("Какво действие желаете да извършите:събиране;изваждане;умножение;детерминанта.");
             String action = input.nextLine();
             if (action.equalsIgnoreCase("събиране")) {
                 addition(firstMatrix, secondMatrix);
@@ -22,6 +22,26 @@ public class Main {
             if (action.equalsIgnoreCase("изваждане")){
                 subtraction(firstMatrix, secondMatrix);
             }
+            if (action.equalsIgnoreCase("умножение")){
+                multiplying(firstMatrix, secondMatrix);
+            }
+            if (action.equalsIgnoreCase("детерминанта")){
+
+            }
+        }
+    }
+
+    private static void multiplying(int[][] firstMatrix, int[][] secondMatrix) {
+        if (firstMatrix.length == secondMatrix[0].length && firstMatrix[0].length == secondMatrix.length){
+            int[][] product = new int[firstMatrix.length][secondMatrix[0].length];
+            for(int i = 0; i < firstMatrix.length; i++) {
+                for (int j = 0; j < secondMatrix[0].length; j++) {
+                    for (int k = 0; k < firstMatrix[0].length; k++) {
+                        product[i][j] += firstMatrix[i][k] * secondMatrix[k][j];
+                    }
+                }
+            }
+            printMatrix(product);
         }
     }
 
@@ -35,7 +55,7 @@ public class Main {
             }
         }
         else{
-            System.out.println("Двете матрици не може да бъдат събрани");
+            System.out.println("Двете матрици не може да бъдат извадени");
         }
     }
 
