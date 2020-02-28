@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff32952d-9c9f-4bb3-80f8-944181bf8d57" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectStage1/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectStage1/com/company/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +23,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
@@ -65,21 +68,25 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1582899646599">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1582900836557">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582899646599" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1582899646599">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582900836557" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1582900836557">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582899646599" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1582899646599">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582900836557" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1582900836557">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582899646599" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1582899646599">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582900836557" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1582900836557">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582899646599" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582900836557" />
+    <state x="499" y="167" key="extract.method.dialog" timestamp="1582900185894">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="167" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1582900185894" />
   </component>
 </project>
