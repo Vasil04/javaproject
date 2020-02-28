@@ -19,15 +19,31 @@ public class Main {
             if (action.equalsIgnoreCase("събиране")) {
                 addition(firstMatrix, secondMatrix);
             }
-            if (action.equalsIgnoreCase("изваждане")){
+            else if (action.equalsIgnoreCase("изваждане")){
                 subtraction(firstMatrix, secondMatrix);
             }
-            if (action.equalsIgnoreCase("умножение")){
+            else if (action.equalsIgnoreCase("умножение")){
                 multiplying(firstMatrix, secondMatrix);
             }
-            if (action.equalsIgnoreCase("детерминанта")){
-
+            else if (action.equalsIgnoreCase("детерминанта")){
+                System.out.println("Ако желаете действието да се изпълни за първата матрица въведете 1, ако желаете за втората - 2");
+                int choice = Integer.parseInt(input.nextLine());
+                if (choice == 1) {
+                    if (firstMatrix.length == firstMatrix[0].length) {
+                        System.out.print("Determinant " + "of the matrix is : " + determinant(firstMatrix, firstMatrix.length));
+                    } else {
+                        System.out.println("Избраната матрица няма детерминанта");
+                    }
+                }
+                else if (choice == 2){
+                    if (secondMatrix.length == secondMatrix[0].length) {
+                        System.out.print("Determinant " + "of the matrix is : " + determinant(secondMatrix, secondMatrix.length));
+                    } else {
+                        System.out.println("Избраната матрица няма детерминанта");
+                    }
+                }
             }
+            else if (action.equalsIgnoreCase())
         }
     }
 
@@ -94,6 +110,45 @@ public class Main {
                 System.out.print(matrix[i][j]);
             }
             System.out.println();
+        }
+    }
+    public static int determinant(int matrix[][], int length){
+        int determinant = 0;
+        if (length == 1){
+            return matrix[0][0];
+        }
+        int cofactors[][] = new int[length][length];
+        int sign = 1;
+        for (int i = 0; i < length; i++) {
+            getCofactor(matrix, cofactors, 0, i, length);
+            determinant += sign * matrix[0][i] * determinant(cofactors, length - 1);
+            sign = -sign;
+        }
+        return determinant;
+    }
+    public static void getCofactor(int matrix[][], int cofactors[][], int row, int column, int length){
+        int rowCounter = 0, columnCounter = 0;
+
+        // Looping for each element of
+        // the matrix
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+
+                // Copying into temporary matrix
+                // only those element which are
+                // not in given row and column
+                if (i != row && j != column) {
+                    cofactors[rowCounter][columnCounter++] = matrix[i][j];
+
+                    // Row is filled, so increase
+                    // row index and reset col
+                    //index
+                    if (columnCounter == length - 1) {
+                        columnCounter = 0;
+                        rowCounter++;
+                    }
+                }
+            }
         }
     }
 }
