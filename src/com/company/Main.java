@@ -193,20 +193,12 @@ public class Main {
     public static void getCofactor(int matrix[][], int cofactors[][], int row, int column, int length){
         int rowCounter = 0, columnCounter = 0;
 
-        // Looping for each element of
-        // the matrix
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
 
-                // Copying into temporary matrix
-                // only those element which are
-                // not in given row and column
                 if (i != row && j != column) {
                     cofactors[rowCounter][columnCounter++] = matrix[i][j];
 
-                    // Row is filled, so increase
-                    // row index and reset col
-                    //index
                     if (columnCounter == length - 1) {
                         columnCounter = 0;
                         rowCounter++;
@@ -217,19 +209,16 @@ public class Main {
     }
     static boolean inverse(int A[][], float [][]inverse)
     {
-        // Find determinant of A[][]
         int det = determinant(A, inverse.length);
         if (det == 0)
         {
             System.out.print("Не съществува обратна матрица на избраната.");
             return false;
         }
-
-        // Find adjoint
+        
         int [][]adj = new int[inverse.length][inverse.length];
         adjoint(A, adj);
 
-        //"inverse(A) = adj(A)/det(A)"
         for (int i = 0; i < inverse.length; i++)
             for (int j = 0; j < inverse.length; j++)
                 inverse[i][j] = adj[i][j]/(float)det;
