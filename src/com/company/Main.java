@@ -8,7 +8,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int[][] firstMatrix = createMatrix(input);
         printMatrix(firstMatrix);
-        System.out.println("Желаете ли да създадете втора матрица? Ако желаете въведете 'да' или 'yes', ако не желаете въведете - 'не' или 'no'. При всеки вход различен от 'да' или 'yes' няма да бъде създадена нова матрица. Ако желаете да прекратите изберете '0'");
+        System.out.println("Желаете ли да създадете втора матрица? Ако желаете въведете 'да' или 'yes', ако не желаете въведете 'не' или 'no'. При всеки вход различен от 'да' или 'yes' няма да бъде създадена нова матрица. Ако желаете да прекратите изберете '0'");
         String response = input.nextLine();
         boolean keepGoing = true;
         while (keepGoing) {
@@ -215,7 +215,7 @@ public class Main {
             System.out.print("Не съществува обратна матрица на избраната.");
             return false;
         }
-        
+
         int [][]adj = new int[inverse.length][inverse.length];
         adjoint(A, adj);
 
