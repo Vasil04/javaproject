@@ -10,17 +10,13 @@ public class Main {
         printMatrix(firstMatrix);
         System.out.println("Желаете ли да създадете втора матрица? Ако желаете въведете 'да' или 'yes', ако не желаете въведете 'не' или 'no'. При всеки вход различен от 'да' или 'yes' няма да бъде създадена нова матрица. Ако желаете да прекратите изберете '0'");
         String response = input.nextLine();
-        boolean keepGoing = true;
-        while (keepGoing) {
-            if (response.equalsIgnoreCase("0")){
-                break;
-            }
-            if (response.equalsIgnoreCase("да") || response.equalsIgnoreCase("yes")) {
-                int[][] secondMatrix = createMatrix(input);
-                printMatrix(secondMatrix);
-
-                System.out.println("Какво действие желаете да извършите: събиране; изваждане; умножение; детерминанта; обратна; единична?");
-                String action = input.nextLine();
+        String action = "";
+        if (response.equalsIgnoreCase("да") || response.equalsIgnoreCase("yes")) {
+            int[][] secondMatrix = createMatrix(input);
+            printMatrix(secondMatrix);
+            while (!(action.equalsIgnoreCase("0")) && !(response.equalsIgnoreCase("0"))) {
+                System.out.println("Какво действие желаете да извършите: събиране; изваждане; умножение; детерминанта; обратна; единична(Ако желаете да прекратите изберете '0')?");
+                action = input.nextLine();
                 if (action.equalsIgnoreCase("събиране")) {
                     addition(firstMatrix, secondMatrix);
                 } else if (action.equalsIgnoreCase("изваждане")) {
@@ -48,19 +44,17 @@ public class Main {
                     int choice = Integer.parseInt(input.nextLine());
                     if (choice == 1) {
                         if (firstMatrix.length == firstMatrix[0].length) {
-                            int[][] adj = new int[firstMatrix.length][firstMatrix.length];
-                            float[][] inv = new float[firstMatrix.length][firstMatrix.length];
-                            System.out.println("Обратната матрица е");
-                            if (inverse(firstMatrix, inv))
-                                display(inv);
+                            findInverseMatrix(firstMatrix);
+                        }
+                        else {
+                            System.out.println("За избраната матрицата не съществува обратна");
                         }
                     } else if (choice == 2) {
                         if (secondMatrix.length == secondMatrix[0].length) {
-                            int[][] adj = new int[secondMatrix.length][secondMatrix.length];
-                            float[][] inv = new float[secondMatrix.length][secondMatrix.length];
-                            System.out.println("Обратната матрица е");
-                            if (inverse(secondMatrix, inv))
-                                display(inv);
+                            findInverseMatrix(secondMatrix);
+                        }
+                        else {
+                            System.out.println("За избраната матрицата не съществува обратна");
                         }
                     }
                 } else if (action.equalsIgnoreCase("единична")) {
@@ -72,40 +66,51 @@ public class Main {
                         isSingular(secondMatrix);
                     }
                 }
-            } else {
-                System.out.println("Какво действие желаете да извършите: детерминанта; обратна; единична?");
-                String actionTwo = input.nextLine();
-                if (actionTwo.equalsIgnoreCase("детерминанта")) {
+            }
+        } else {
+                while (!(action.equalsIgnoreCase("0")) && !(response.equalsIgnoreCase("0"))) {
+                System.out.println("Какво действие желаете да извършите: детерминанта; обратна; единична(Ако желаете да прекратите изберете '0')?");
+                action = input.nextLine();
+                if (action.equalsIgnoreCase("детерминанта")) {
                     if (firstMatrix.length == firstMatrix[0].length) {
                         System.out.println("Детерминантата на избраната матрица е: " + determinant(firstMatrix, firstMatrix.length));
                     } else {
                         System.out.println("Избраната матрица няма детерминанта");
                     }
-                } else if (actionTwo.equalsIgnoreCase("обратна")) {
+                } else if (action.equalsIgnoreCase("обратна")) {
                     if (firstMatrix.length == firstMatrix[0].length) {
-                        int[][] adj = new int[firstMatrix.length][firstMatrix.length];
-                        float[][] inv = new float[firstMatrix.length][firstMatrix.length];
-                        System.out.println("Обратната матрица е");
-                        if (inverse(firstMatrix, inv))
-                            display(inv);
+                        findInverseMatrix(firstMatrix);
                     }
-                } else if (actionTwo.equalsIgnoreCase("единична")) {
+                } else if (action.equalsIgnoreCase("единична")) {
                     isSingular(firstMatrix);
                 }
             }
         }
     }
+
+    private static void findInverseMatrix(int[][] firstMatrix) {
+        int[][] adj = new int[firstMatrix.length][firstMatrix.length];
+        float[][] inv = new float[firstMatrix.length][firstMatrix.length];
+        System.out.println("Обратната матрица е");
+        if (inverse(firstMatrix, inv))
+            display(inv);
+    }
+
     private static void isSingular(int[][] matrix) {
-        int counter = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                if (matrix[i][i] == 1 && matrix[i][j] == 0) {
-                    counter++;
+        if (matrix.length == matrix[0].length) {
+            int counter = 0;
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix.length; j++) {
+                    if (matrix[i][i] == 1 && matrix[i][j] == 0) {
+                        counter++;
+                    }
                 }
             }
-        }
-        if ((counter / (matrix.length-1)) == matrix.length){
-            System.out.println("Матрицата е единична");
+            if ((counter / (matrix.length - 1)) == matrix.length) {
+                System.out.println("Матрицата е единична");
+            } else {
+                System.out.println("Матрицата не е единична");
+            }
         }
         else {
             System.out.println("Матрицата не е единична");
@@ -122,6 +127,9 @@ public class Main {
                 }
             }
             printMatrix(product);
+        }
+        else {
+            System.out.println("Дадените матрици не може да се умножат");
         }
     }
 
@@ -154,7 +162,7 @@ public class Main {
     }
 
     private static int[][] createMatrix(Scanner input) {
-        System.out.println("Моля въведете колко реда желаете да има вашата матрица");
+        System.out.println("Моля въведете колко реда желаете да има вашата матрица(Всички данни трябва да са числа)");
         int rows = Integer.parseInt(input.nextLine());
         System.out.println("и сега колко колони");
         int columns = Integer.parseInt(input.nextLine());
